@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>GP_SIR_ERA_PW</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-section">
+                <h1>🔮 GP_SIR_ERA_PW</h1>
+                <span class="badge">⚡ BATCH VIEWER</span>
+            </div>
+            <p>Physics Wallah Batches — Free Access for Everyone</p>
+        </header>
+
+        <div class="stats">
+            <div class="stat-box glass">
+                <span>📚</span>
+                <h3 id="batchCount">0</h3>
+                <p>Total Batches</p>
+                <small>Available Now 🔥</small>
+            </div>
+            <div class="stat-box glass highlight">
+                <span>👤</span>
+                <h3 id="userName">Gpsirera</h3>
+                <p>Logged In As</p>
+                <small>7005602584</small>
+            </div>
+            <div class="stat-box glass">
+                <span>⏳</span>
+                <h3 id="tokenStatus">✅ Active</h3>
+                <p>Token Status</p>
+                <small>Valid until 6 months</small>
+            </div>
+        </div>
+
+        <div class="cta-section glass">
+            <h2>🚀 Your Batches</h2>
+            <p>Access all your enrolled batches for free</p>
+            <button onclick="loadBatches()" class="btn">📚 Load Batches</button>
+        </div>
+
+        <div class="batch-grid" id="batchGrid">
+            <p>Click "Load Batches" to see your enrolled batches</p>
+        </div>
+
+        <div class="token-section glass">
+            <h3>🔑 Your Auth Token</h3>
+            <p class="token-display" id="tokenDisplay">Click to show token</p>
+            <button onclick="toggleToken()" class="btn-small">👁️ Show/Hide Token</button>
+            <button onclick="copyToken()" class="btn-small">📋 Copy Token</button>
+        </div>
+
+        <footer>
+            <p>© 2026 <strong>GP_SIR_ERA</strong> • Physics Wallah Batch Viewer</p>
+            <p class="tag">~#gpsirAI</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
