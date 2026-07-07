@@ -1,4 +1,4 @@
-// ===== BATCH ID (YOUR BATCH) =====
+// ===== BATCH ID =====
 const BATCH_ID = "6779345c20fa0756e4a7fd08";
 const API_BASE = "https://liteapi.pw4free.in/api/v1";
 
@@ -28,22 +28,30 @@ async function loadSubjects() {
         }
     } catch (error) {
         console.error('Error loading subjects:', error);
-        // Fallback: Show subjects from pw4free
-        grid.innerHTML = `
-            <div class="subject-card" onclick="openSubject('69beb1defa18934d859e3526', 'Physics')">
-                <h3>📘 Physics</h3>
-                <p>Multiple chapters</p>
-            </div>
-            <div class="subject-card" onclick="openSubject('69beb23b007b534bb5de5b7d', 'Chemistry')">
-                <h3>📘 Chemistry</h3>
-                <p>Multiple chapters</p>
-            </div>
-            <div class="subject-card" onclick="openSubject('69beb28388683c394e8a56a2', 'Mathematics')">
-                <h3>📘 Mathematics</h3>
-                <p>Multiple chapters</p>
-            </div>
-        `;
+        showFallbackSubjects();
     }
+}
+
+// ===== FALLBACK SUBJECTS =====
+function showFallbackSubjects() {
+    const grid = document.getElementById('subjectsGrid');
+    const subjects = [
+        { id: '69beb1defa18934d859e3526', name: 'Physics', chapters: '12' },
+        { id: '69beb23b007b534bb5de5b7d', name: 'Chemistry', chapters: '10' },
+        { id: '69beb28388683c394e8a56a2', name: 'Mathematics', chapters: '14' }
+    ];
+    
+    grid.innerHTML = '';
+    subjects.forEach(subject => {
+        const card = document.createElement('div');
+        card.className = 'subject-card';
+        card.innerHTML = `
+            <h3>📘 ${subject.name}</h3>
+            <p>${subject.chapters} chapters</p>
+        `;
+        card.onclick = () => openSubject(subject.id, subject.name);
+        grid.appendChild(card);
+    });
 }
 
 // ===== OPEN SUBJECT =====
@@ -55,8 +63,6 @@ function openSubject(subjectId, subjectName) {
     title.textContent = `📖 ${subjectName}`;
     iframe.src = `https://lite.pw4free.in/subject?batchId=${BATCH_ID}&subjectId=${subjectId}`;
     frame.style.display = 'block';
-    
-    // Scroll to frame
     frame.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
@@ -68,6 +74,5 @@ function closeContent() {
 
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', loadSubjects);
-console.log('🔮 GP_SIR_ERA — Free Batch Viewer');
+console.log('🔮 GP_SIR_ERA — Real PW Batch Viewer');
 console.log('📚 Batch ID:', BATCH_ID);
-console.log('✅ No login required!');
